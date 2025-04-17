@@ -1,0 +1,351 @@
+:root {
+    /* General Colors */
+    --background-color: #f9fafc;
+    --grand_titre_color: #1e1a5f;
+    --text-color: #2c3e50;
+    --primary-color: #3498db; 
+    --primary-hover-color: #5dade2;
+    --secondary-color: #2ecc71;
+    --secondary-hover-color: #27ae60;
+    --modal-overlay-color: rgba(0, 0, 0, 0.6);
+    --input-border-color: #dcdde1;
+    --modern-red: #e74c3c;
+    --modern-red-hover: #c0392b;
+    --accent-color: #f39c12;
+    --accent-hover-color: #e67e22;
+
+    /* Font */
+    --font-family: 'Poppins', sans-serif;
+    --font-size: 1rem;
+    --font-weight-bold: 600;
+
+    /* Spacing */
+    --padding: 1rem;
+    --margin: 0.5rem;
+    --border-radius: 8px;
+
+    /* Shadows */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================
+    General Styles
+    =========================== */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ===========================
+    Navigation Bar
+    =========================== */
+header nav {
+    padding: var(--padding);
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
+}
+
+/* ===========================
+    Main Title
+    =========================== */
+.grand_titre {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+}
+
+/* ===========================
+    Main Content
+    =========================== */
+.main-content {
+    margin: 2rem auto;
+    background: #fff;
+    width: 80%;
+    padding: 2%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+/* ===========================
+    Form Styles
+    =========================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#techFormLeft {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: start;
+    gap: 1.5rem;
+}
+
+.span_lab_inp {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+.span_lab_inp label {
+    font-weight: var(--font-weight-bold);
+    flex: 1;
+    color: var(--text-color);
+}
+
+.span_lab_inp input {
+    flex: 2;
+    max-width: 100%;
+    width: 90%;
+    border: 2px solid var(--input-border-color);
+    padding: 0.8rem;
+    border-radius: var(--border-radius);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.span_lab_inp input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+/* Form Buttons */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/* ===========================
+    Button Styles
+    =========================== */
+button {
+    position: relative;
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: var(--font-size);
+    padding: 0.8rem 1.5rem;
+    margin: var(--margin) 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    z-index: 1;
+    width: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.5px;
+}
+.reset_btn{
+    background-color: transparent;
+    color: var(--primary-color);
+    border: solid 2px var(--primary-color);
+    transition: all 0.3s ease;
+}
+.reset_btn:hover{
+    color: var(--modern-red-hover);
+    border-color: var(  --modern-red-hover);
+}
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-hover);
+    
+}
+.submit_btn:hover{
+    background-color: var(--primary-hover-color);
+}
+
+/* ===========================
+    Floating Button
+    =========================== */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+
+.floating-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.floating-btn:hover {
+    background-color: var(--secondary-hover-color);
+    transform: translateY(-5px);
+}
+
+/* ===========================
+    Modal Styles
+    =========================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-overlay-color);
+
+    
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin: auto;
+    padding: var(--padding);
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 0.3s ease;
+}
+.modal-content .close{
+    text-align: end;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1.5rem;
+}
+.class_contenue_note{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+}
+#noteText{
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--font-size);
+    max-width:100%;
+    text-align: center;
+    padding: 5%;
+}
+.modal-content button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ===========================
+    Animations
+    =========================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+header {
+    padding: var(--padding);
+    color: white;
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    gap: var(--margin);
+}
+
+.navbar .icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar .icon.active {
+    border-bottom: 2px solid white;
+}
+
+.navbar .icon:hover {
+    color: var(--primary-hover-color);
+    transform: translateY(-4px) scale(1.1);
+}
+
+.navbar .icon[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+

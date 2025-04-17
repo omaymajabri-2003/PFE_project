@@ -1,0 +1,181 @@
+:root {
+    /* General Colors */
+    --background-color: #f9fafc;
+    --grand_titre_color: #1e1a5f;
+    --text-color: #2c3e50;
+    --primary-color: #3498db; 
+    --primary-hover-color: #5dade2;
+    --secondary-color: #2ecc71;
+    --secondary-hover-color: #27ae60;
+    --modal-overlay-color: rgba(0, 0, 0, 0.6);
+    --input-border-color: #dcdde1;
+    --modern-red: #e74c3c;
+    --modern-red-hover: #c0392b;
+    --accent-color: #f39c12;
+    --accent-hover-color: #e67e22;
+
+    /* Font */
+    --font-family: 'Poppins', sans-serif;
+    --font-size: 1rem;
+    --font-weight-bold: 600;
+
+    /* Spacing */
+    --padding: 1rem;
+    --margin: 0.5rem;
+    --border-radius: 8px;
+
+    /* Shadows */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    padding: var(--padding);
+    color: white;
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    gap: var(--margin);
+}
+
+.navbar .icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar .icon.active {
+    border-bottom: 2px solid white;
+}
+
+.navbar .icon:hover {
+    color: var(--primary-hover-color);
+    transform: translateY(-4px) scale(1.1);
+}
+
+.navbar .icon[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+/* Profile Container */
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    padding: var(--padding);
+    gap: var(--margin);
+    
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: auto;
+    
+}
+.div_informations {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.profile-card h2 {
+    color: var(--grand_titre_color);
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: var(--margin);
+}
+
+.profile-card p {
+    color: var(--text-color);
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin-bottom: var(--margin);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .profile-card h2 {
+        font-size: 1.2rem;
+    }
+
+    .profile-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card h2 {
+        font-size: 1rem;
+    }
+
+    .profile-card p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Buttons */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: var(--padding);
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}

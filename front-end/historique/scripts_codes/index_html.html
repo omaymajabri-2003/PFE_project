@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des Données</title>
+    <link rel="stylesheet" href="index_css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section id="section_1">
+        <header>
+            <nav class="navbar">
+                <a href="acceuille.html" class="icon" data-tooltip="Accueil"><i class="fas fa-home"></i></a>
+                <a href="historique.html" class="icon active" data-tooltip="Historique"><i class="fas fa-history"></i></a>
+                <a href="profile.html" class="icon" data-tooltip="Profil"><i class="fas fa-user"></i></a>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="div_label_name">
+                <label class="label_name">Historique des Données</label>
+            </div>
+            
+            <div class="div_rech_tab">
+                <div class="div_recherche">
+                
+                    <div class="filters">
+                        <label for="search-date">Rechercher par date :</label>
+                        <input type="date" id="search-date" class="modern-input">
+                        <button id="apply-filter" class="modern-button">Appliquer</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Heure</th>
+                                <th>pH</th>
+                                <th>BX</th>
+                                <th>Température</th>
+                                <th>Couleur</th>
+                                <th>Lait de Chaux</th>
+                                <th>CO2</th>
+                                <th>Alcalinité</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-body">
+                            <tr>
+                                <td>2023-10-01</td>
+                                <td>12:00</td>
+                                <td>7.2</td>
+                                <td>5.6</td>
+                                <td>25°C</td>
+                                <td>Blanc</td>
+                                <td>Oui</td>
+                                <td>Non</td>
+                                <td>8.5</td>
+                            </tr>
+                            <tr>
+                                <td>2023-10-02</td>
+                                <td>14:00</td>
+                                <td>7.4</td>
+                                <td>5.8</td>
+                                <td>26°C</td>
+                                <td>Jaune</td>
+                                <td>Non</td>
+                                <td>Oui</td>
+                                <td>8.7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <script>
+        document.getElementById('apply-filter').addEventListener('click', function() {
+            const searchDate = document.getElementById('search-date').value;
+            const rows = document.querySelectorAll('#data-body tr');
+            
+            rows.forEach(row => {
+                const dateCell = row.querySelector('td:first-child').textContent;
+                if (searchDate && dateCell !== searchDate) {
+                    row.style.display = 'none';
+                } else {
+                    row.style.display = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

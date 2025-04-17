@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saisie des Données - Technicien de Labo</title>
+    <link rel="stylesheet" href="index_css.css">
+    <script defer src="index_js.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <header>
+        <nav class="navbar">
+            <a href="acceuille.html" class="icon" data-tooltip="Accueil"><i class="fas fa-home"></i></a>
+            <a href="historique.html" class="icon active" data-tooltip="Historique"><i class="fas fa-history"></i></a>
+            <a href="profile.html" class="icon" data-tooltip="Profil"><i class="fas fa-user"></i></a>
+        </nav>
+    </header>
+
+    <!-- Contenu principal -->
+    <h1 class="grand_titre">Saisie des Données du Technicien</h1>
+    <div class="main-content">
+        
+        <form id="techForm">
+            <span id="techFormLeft">
+                <span class="span_lab_inp"><label>pH : <input type="number" step="0.01" name="ph" required></label></span>
+                <span class="span_lab_inp"><label>Bx : <input type="number" step="0.01" name="bx" required></label></span>
+                <span class="span_lab_inp"><label>Température (°C) : <input type="number" name="temperature" required></label></span>
+                <span class="span_lab_inp"><label>Couleur : <input type="text" name="couleur" required></label></span>
+                <span class="span_lab_inp"><label>Lait de chaux : <input type="text" name="lait_chaux" required></label></span>
+                <span class="span_lab_inp"><label>CO2 : <input type="text" name="co2" required></label></span>
+                <span class="span_lab_inp"><label>Alcalinité : <input type="text" name="alcalinite" required></label></span>
+            </span>
+            <span class="form-buttons"> 
+                <button type="submit" class="submit_btn">Envoyer</button>
+                <button type="reset" class="reset_btn">Annuler</button>
+            </span>
+        </form>
+    </div>
+
+    <!-- Bouton flottant pour ajouter une note avec une image -->
+    <button id="addNoteBtn" class="floating-btn">
+        <img src="..\media\icons_ajout_note.png" alt="Ajouter une note" class="button-image">
+    </button>
+
+    <!-- Fenêtre modale pour ajouter une note -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <span class="class_contenue_note">
+                <h2>Ajouter une Note</h2>
+                <textarea id="noteText" placeholder="Écrivez votre note ici..."></textarea>
+                <button id="saveNoteBtn">Envoyer</button>
+            </span>
+        </div>
+    </div>
+
+</body>
+</html>

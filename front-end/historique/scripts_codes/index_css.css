@@ -1,0 +1,247 @@
+:root {
+    /* General Colors */
+    --background-color: #f9fafc;
+    --grand_titre_color: #1e1a5f;
+    --text-color: #2c3e50;
+    --primary-color: #3498db; 
+    --primary-hover-color: #5dade2;
+    --secondary-color: #2ecc71;
+    --secondary-hover-color: #27ae60;
+    --modal-overlay-color: rgba(0, 0, 0, 0.6);
+    --input-border-color: #dcdde1;
+    --modern-red: #e74c3c;
+    --modern-red-hover: #c0392b;
+    --accent-color: #f39c12;
+    --accent-hover-color: #e67e22;
+
+    /* Font */
+    --font-family: 'Poppins', sans-serif;
+    --font-size: 1rem;
+    --font-weight-bold: 600;
+
+    /* Spacing */
+    --padding: 1rem;
+    --margin: 0.5rem;
+    --border-radius: 8px;
+
+    /* Shadows */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header {
+    padding: var(--padding);
+    color: white;
+    box-shadow: var(--box-shadow);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    gap: var(--margin);
+}
+
+.navbar .icon {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar .icon.active {
+    border-bottom: 2px solid white;
+}
+
+.navbar .icon:hover {
+    color: var(--primary-hover-color);
+    transform: translateY(-4px) scale(1.1);
+}
+
+.navbar .icon[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+main {
+    padding: var(--padding);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15vh;
+    justify-content: center;
+}
+
+.div_label_name {
+    text-align: center;
+    margin-top: 6.5vh;
+}
+
+.label_name {
+    text-align: center;
+    color: var(--grand_titre_color);
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    padding-bottom: 0.5rem;
+}
+
+.label_name::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+    transition: width 0.3s ease-in-out;
+}
+
+.label_name:hover::after {
+    animation: underlineGrow 0.3s ease-in-out forwards;
+}
+
+.div_recherche {
+    background-color: white;
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: var(--margin);
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.filters label {
+    font-weight: var(--font-weight-bold);
+}
+
+.filters input[type="date"] {
+    padding: 5px;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+}
+
+.filters button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.filters button:hover {
+    background-color: var(--primary-hover-color);
+    transform: scale(1.05);
+}
+
+.container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--margin);
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid var(--input-border-color);
+}
+
+table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--background-color);
+    animation-delay: 0.2s;
+}
+
+table tr:nth-child(odd) {
+    animation-delay: 0.3s;
+}
+
+table tr {
+    animation: rowFadeIn 0.5s ease-in-out;
+}
+
+table tr:hover {
+    background-color: var(--primary-hover-color);
+    color: white;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.modern-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+/* Keyframes */
+@keyframes underlineGrow {
+    from {
+        width: 50%;
+    }
+    to {
+        width: 80%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
