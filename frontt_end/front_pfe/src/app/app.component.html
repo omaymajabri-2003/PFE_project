@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentification - STS Béja</title>
-    @vite('resources/css/app.css')
 
 </head>
 <body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="background-video">
+        <source src="vid (3).mp4" type="video/mp4"> <!--Vid (3)-->
+        Your browser does not support the video tag.
+    </video>
     <div class="video-overlay"></div>
-
+    <h1 class="title">Société Tunisienne de Sucre - Béja</h1>
     <div class="container">
+
+
+
         <div class="options">
-            <h1 class="title">Société Tunisienne de Sucre - Béja</h1>
             <p class="subtitle">Choisissez votre espace</p>
             <div class="card" onclick="selectRole('responsable')">
-                <h2>Espace Responsables</h2>
+                <h2 (click)="goToEspaceResponsable()">Espace Responsables</h2>
             </div>
             <div class="card" onclick="selectRole('technicien')">
-                <h2>Espace Technicien</h2>
+                <h2 (click)="goToEspaceTechnicien()">Espace Technicien</h2>
             </div>
+            <router-outlet></router-outlet>
         </div>
 
         <form id="loginForm" class="hidden">

@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Video Background */
+#background-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Ensures the video covers the entire screen */
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Sends the video to the background */
+  filter: brightness(0.8) blur(2px); /* Adds a dim and blur effect */
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(73, 73, 255, 0.224); /* Semi-transparent blue overlay */
+  z-index: -1; /* Places it behind other elements */
+}
+
+/* Login Form Styling */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 6vh;
+  background: rgb(255, 255, 255); /* White background */
+  color: #333333; /* Dark text color */
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%; /* Full width for smaller screens */
+  max-width: 800px; /* Maximum width for larger screens */
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* Subtle shadow effect */
+  transition: width 0.3s ease, height 0.3s ease; /* Smooth resizing */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the container */
+}
+
+/* Responsive Container Width */
+@media (max-width: 500px) {
+  .container {
+      width: 70%; /* Wider on medium screens */
+      max-height: 100%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1024px) {
+  .container {
+      justify-content: space-evenly;
+      gap: 6vh;
+      background: rgb(223, 4, 4); /* White background */
+      color: #333333; /* Dark text color */
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%; /* Full width for smaller screens */
+      max-width: calc(100% + 10vw); /* Maximum width for larger screens */
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* Subtle shadow effect */
+      transition: width 0.3s ease, height 0.3s ease; /* Smooth resizing */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the container */
+
+  }
+}
+
+/*@media (min-width: 1024px) {
+  .container {
+      width: 50%; /* Even wider on larger screens */
+     /* height: auto;
+  }
+}
+
+/* Titles */
+.title {
+  display: block !important;
+  font-size: clamp(14px, 2.5em, 15vw); /* Responsive font size */
+  color: #1e1a5f; /* Dark blue color */
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  letter-spacing: 1.2px; /* Clean spacing */
+}
+
+/* Options Section */
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+/* Buttons and Cards */
+  #submit_btn {
+      font-weight: bolder;
+      font-size: 1.2rem; /* Adjust the text size */
+  }
+
+.card, #submit_btn {
+  position: relative;
+  background-color: #A3D6FF; /* Light blue background */
+  border: none;
+  color: #002447; /* Dark blue text */
+  font-size: 0.8rem;
+  padding: 1.5%; /* Padding for buttons */
+  margin: 2vw;
+  border-radius: 35px; /* Rounded corners */
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.2s, background 0.3s; /* Smooth hover effects */
+  flex: 1;
+  margin: 5px;
+}
+
+/* Hover Effects for Buttons and Cards */
+.card:hover, #submit_btn:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  color: white; /* Change text color to white */
+}
+
+.card::after, #submit_btn::after {
+  position: absolute;
+  content: "";
+  background: linear-gradient(to right, #A3D5FF, #8A2BE2); /* Gradient effect */
+  left: 0%;
+  top: 0;
+  width: 0;
+  height: 100%;
+  border-radius: 35px;
+  transition: all 0.4s; /* Smooth transition */
+  z-index: -1;
+}
+
+.card:hover::after, #submit_btn:hover::after {
+  width: 100%; /* Expand gradient on hover */
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-20px); /* Slide-in effect */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+form.show {
+  opacity: 1; /* Make visible */
+  transform: translateY(0); /* Reset position */
+}
+
+/* Input Fields */
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Error Messages */
+.error-message {
+  color: red;
+  font-size: 14px;
+  display: none; /* Hidden by default */
+}
+
+/* Utility Classes */
+.hidden {
+  display: none; /* Utility class to hide elements */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .options {
+      flex-direction: column; /* Stack options vertically on small screens */
+  }
+}
