@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\espace_responsable\updaye_account;
 
 use App\Http\Controllers\Controller;
+use App\Models\Technicien;
 use Illuminate\Http\Request;
 
 class UpdateAccountTechnicienController extends Controller
@@ -25,7 +26,7 @@ class UpdateAccountTechnicienController extends Controller
     ]);
 
     // 2. Rechercher le technicien
-    $technicien = \App\Models\Technicien::where('Matricule_tech', $request->matricule_tech)->first();
+    $technicien = Technicien::where('Matricule_tech', $request->matricule_tech_obligatoire)->first();
 
     if (!$technicien) {
         return redirect()->back()->with('error', '❌ Aucun technicien trouvé avec ce matricule.');
@@ -34,12 +35,12 @@ class UpdateAccountTechnicienController extends Controller
     // 3. Préparer les données à mettre à jour (seulement si elles sont présentes)
     $data = [];
 
-    if ($request->filled('firstName_tech')) {
-        $data['Prenom_tech'] = $request->firstName_tech;
+    if ($request->filled('Prenom_tech')) {
+        $data['Prenom_tech'] = $request->Prenom_tech;
     }
 
-    if ($request->filled('lastName_tech')) {
-        $data['Nom_tech'] = $request->lastName_tech;
+    if ($request->filled('Nom_tech')) {
+        $data['Nom_tech'] = $request->Nom_tech;
     }
 
     if ($request->filled('email_tech')) {
@@ -52,6 +53,10 @@ class UpdateAccountTechnicienController extends Controller
 
     if ($request->filled('password_tech')) {
         $data['Mot_de_passe_tech'] = bcrypt($request->password_tech); // hash sécurisé
+    }
+
+    if ($request->filled('password_tech')) {
+        $data['Matricule_tech'] =$request->matricule_tech;
     }
 
     // 4. Vérifier s’il y a des données à modifier

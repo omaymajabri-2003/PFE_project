@@ -4,54 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Création de Compte</title>
-    @vite('resources/css/app.css')
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-gray-100 flex justify-center items-center h-screen">
+<body class="bg-gradient-to-br from-blue-50 to-indigo-50 font-sans min-h-screen flex items-center justify-center p-4">
 
-    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h1 class="text-2xl font-bold text-blue-900 mb-6">Création de Compte</h1>
-
-        <div class="flex justify-center gap-6 mb-4">
-            <button class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-400 w-44" id="technicienBtn">Créer un compte Technicien</button>
-            <button class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-400 w-44" id="responsableBtn">Créer un compte Responsable</button>
-        </div>
-
-        <!-- Modal pour technicien -->
-        <div class="modal hidden fixed inset-0 bg-black bg-opacity-50 justify-center items-center" id="technicienModal">
-            <div class="bg-white p-8 rounded-lg shadow-lg w-80">
-                <span class="absolute top-4 right-4 text-xl font-bold cursor-pointer" id="closeTechnicienModal">&times;</span>
-                <h2 class="text-xl font-semibold text-blue-900 mb-4">Créer un compte Technicien</h2>
-                <form id="technicienForm" class="space-y-4">
-                    <label for="technicienName" class="text-sm">Nom:</label>
-                    <input type="text" id="technicienName" name="technicienName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    <label for="technicienEmail" class="text-sm">Email:</label>
-                    <input type="email" id="technicienEmail" name="technicienEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400 w-full">Créer</button>
-                </form>
+    <div class="w-full max-w-md">
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+            <!-- En-tête avec dégradé -->
+            <div class="bg-gradient-to-r from-indigo-600 to-blue-600 p-6 text-center">
+                <h1 class="text-2xl font-bold text-white">Création de Compte</h1>
+                <p class="text-blue-100 mt-1">Sélectionnez le type de compte à créer</p>
             </div>
-        </div>
 
-        <!-- Modal pour responsable -->
-        <div class="modal hidden fixed inset-0 bg-black bg-opacity-50 justify-center items-center" id="responsableModal">
-            <div class="bg-white p-8 rounded-lg shadow-lg w-80">
-                <span class="absolute top-4 right-4 text-xl font-bold cursor-pointer" id="closeResponsableModal">&times;</span>
-                <h2 class="text-xl font-semibold text-green-900 mb-4">Créer un compte Responsable</h2>
-                <form id="responsableForm" class="space-y-4">
-                    <label for="responsableName" class="text-sm">Nom:</label>
-                    <input type="text" id="responsableName" name="responsableName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <!-- Options de création -->
+            <div class="p-6 grid gap-6 md:grid-cols-2">
+                <!-- Carte Technicien -->
+                <a href="{{ route('createTechnicien') }}"
+                   class="group relative flex flex-col items-center p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-indigo-100 p-3 rounded-full">
+                        <i class="fas fa-user-cog text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="mt-4 text-lg font-medium text-gray-900">Technicien</h3>
+                    <p class="mt-2 text-sm text-gray-500 text-center">Créer un nouveau compte technicien</p>
+                    <div class="mt-4 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-full text-sm font-medium group-hover:bg-indigo-100 transition-colors">
+                        Créer
+                    </div>
+                </a>
 
-                    <label for="responsableEmail" class="text-sm">Email:</label>
-                    <input type="email" id="responsableEmail" name="responsableEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <!-- Carte Responsable -->
+                <a href="{{ route('createResponsable') }}"
+                   class="group relative flex flex-col items-center p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-100 p-3 rounded-full">
+                        <i class="fas fa-user-shield text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="mt-4 text-lg font-medium text-gray-900">Responsable</h3>
+                    <p class="mt-2 text-sm text-gray-500 text-center">Créer un nouveau compte responsable</p>
+                    <div class="mt-4 px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium group-hover:bg-blue-100 transition-colors">
+                        Créer
+                    </div>
+                </a>
+            </div>
 
-                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-400 w-full">Créer</button>
-                </form>
+            <!-- Pied de page -->
+            <div class="bg-gray-50 px-6 py-4 text-center">
+                <p class="text-xs text-gray-500">Sélectionnez le type de compte que vous souhaitez créer</p>
             </div>
         </div>
     </div>
 
-    
 </body>
 </html>

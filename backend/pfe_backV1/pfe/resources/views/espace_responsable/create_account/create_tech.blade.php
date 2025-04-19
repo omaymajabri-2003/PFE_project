@@ -3,157 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer un compte Responsable</title>
+    <title>Créer un compte Technicien</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --background-color: #f4f7fc;
-            --card-bg-color: #ffffff;
-            --grand_titre_color: #1e1a5f;
-            --text-color: #34495e;
-            --primary-color: #4a90e2;
-            --primary-hover-color: #357ab8;
-            --secondary-color: #2ecc71;
-            --secondary-hover-color: #27ae60;
-            --input-border-color: #dcdde1;
-            --input-focus-border-color: #4a90e2;
-            --error-color: #e74c3c;
-            --success-bg-color: #2ecc71;
-            --success-text-color: #ffffff;
-            --font-family: 'Poppins', sans-serif;
-            --border-radius: 10px;
-            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --box-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.15);
-            --padding: 1rem;
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        .card {
-            background-color: var(--card-bg-color);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: var(--padding);
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            padding: var(--padding);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover-color);
-            box-shadow: var(--box-shadow-hover);
-        }
-
-        .input-field {
-            padding: var(--padding);
-            border: 1px solid var(--input-border-color);
-            border-radius: var(--border-radius);
-            transition: border-color 0.3s ease;
-        }
-
-        .input-field:focus {
-            border-color: var(--input-focus-border-color);
-            outline: none;
-        }
-
-        .error-message {
-            color: var(--error-color);
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        .success-message {
-            background-color: var(--success-bg-color);
-            color: var(--success-text-color);
-            padding: var(--padding);
-            border-radius: var(--border-radius);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .form-title {
-            color: var(--grand_titre_color);
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-
-    <div class="max-w-lg mx-auto mt-10 card">
-        <h2 class="form-title">Créer un compte technicien</h2>
-
-        <!-- Affichage des messages de succès ou d'erreur globaux -->
-        @if(session('success'))
-            <div id="success-message" class="success-message">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if($errors->any())
-            <div class="bg-red-500 text-white text-center p-4 mb-6 rounded-md shadow-md">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form action="{{ route('createTechnicien') }}" method="POST" class="grid grid-cols-1 gap-6">
-            @csrf
-
-            <div>
-                <label for="Matricule_tech" class="block font-medium">Matricule</label>
-                <input type="text" name="Matricule_tech" id="Matricule_tech" class="input-field w-full" required>
-                @error('Matricule_resp')<div class="error-message">{{ $message }}</div>@enderror
+<body class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-100 font-sans flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <div class="bg-white rounded-xl shadow-2xl p-8 backdrop-blur-sm bg-opacity-90 border border-white border-opacity-20">
+            <!-- Logo/Titre -->
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-bold text-indigo-600 mb-2">Créer un compte Technicien</h1>
+                <p class="text-gray-500">Remplissez les informations requises</p>
             </div>
 
-            <div>
-                <label for="Nom_tech" class="block font-medium">Nom</label>
-                <input type="text" name="Nom_tech" id="Nom_tech" class="input-field w-full" required>
-                @error('Nom_resp')<div class="error-message">{{ $message }}</div>@enderror
-            </div>
+            <!-- Messages d'état -->
+            @if(session('success'))
+                <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-            <div>
-                <label for="Prenom_tech" class="block font-medium">Prénom</label>
-                <input type="text" name="Prenom_tech" id="Prenom_tech" class="input-field w-full" required>
-                @error('Prenom_resp')<div class="error-message">{{ $message }}</div>@enderror
-            </div>
+            @if($errors->any())
+                <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-            <div>
-                <label for="CIN_tech" class="block font-medium">CIN</label>
-                <input type="text" name="CIN_tech" id="CIN_tech" class="input-field w-full" required>
-                @error('CIN_resp')<div class="error-message">{{ $message }}</div>@enderror
-            </div>
+            <!-- Formulaire -->
+            <form action="{{ route('createTechnicien') }}" method="POST" class="space-y-5">
+                @csrf
 
-            <div>
-                <label for="Email_tech" class="block font-medium">Email</label>
-                <input type="email" name="Email_resp" id="Email_tech" class="input-field w-full" required>
-                @error('Email_tech')<div class="error-message">{{ $message }}</div>@enderror
-            </div>
+                <!-- Matricule -->
+                <div>
+                    <label for="Matricule_tech" class="block text-sm font-medium text-gray-700 mb-1">Matricule</label>
+                    <div class="relative">
+                        <input type="text" name="Matricule_tech" id="Matricule_tech"
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                               placeholder="Tapez le matricule" required>
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-id-card text-gray-400"></i>
+                        </div>
+                    </div>
+                    @error('Matricule_tech')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
 
-            <div>
-                <label for="Mot_de_passe" class="block font-medium">Mot de passe</label>
-                <input type="password" name="Mot_de_passe" id="Mot_de_passe" class="input-field w-full" required>
-                @error('Mot_de_passe')<div class="error-message">{{ $message }}</div>@enderror
-            </div>
+                <!-- Nom et Prénom -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="Nom_tech" class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+                        <input type="text" name="Nom_tech" id="Nom_tech"
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                               placeholder="Votre nom" required>
+                        @error('Nom_tech')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="Prenom_tech" class="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
+                        <input type="text" name="Prenom_tech" id="Prenom_tech"
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                               placeholder="Votre prénom" required>
+                        @error('Prenom_tech')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
 
-            <button type="submit" class="btn-primary w-full">Créer le compte</button>
-        </form>
+                <!-- CIN -->
+                <div>
+                    <label for="CIN_tech" class="block text-sm font-medium text-gray-700 mb-1">CIN</label>
+                    <div class="relative">
+                        <input type="text" name="CIN_tech" id="CIN_tech"
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                               placeholder="Numéro CIN" required>
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-address-card text-gray-400"></i>
+                        </div>
+                    </div>
+                    @error('CIN_tech')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="Email_tech" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <div class="relative">
+                        <input type="email" name="Email_tech" id="Email_tech"
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                               placeholder="email@exemple.com" required>
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
+                    </div>
+                    @error('Email_tech')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Mot de passe -->
+                <div>
+                    <label for="Mot_de_passe" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
+                    <div class="relative">
+                        <input type="password" name="Mot_de_passe" id="Mot_de_passe"
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+                               placeholder="••••••••" required>
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                    </div>
+                    @error('Mot_de_passe')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Bouton de soumission -->
+                <button type="submit"
+                        class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-2 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 transform hover:scale-105">
+                    Créer le compte
+                </button>
+
+                <!-- lien vers la page de creation de compte technicien -->
+                <div class="div_link_tech">
+                    <a href="{{ route('createResponsable') }}" class="text-sm text-indigo-600 hover:text-indigo-500 text-center" > Créer un compte Responsable </a>
+                </div>
+                <!-- lien vers la page de creation des comptes-->
+
+                <div class="div_link_retourne">
+                    <a href="{{ route('createAccount_view') }}" class="text-sm text-indigo-600 hover:text-indigo-500 text-center" > retourne a la page précédente </a>
+                </div>
+
+            </form>
+        </div>
     </div>
-
 </body>
 </html>

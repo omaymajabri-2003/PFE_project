@@ -35,7 +35,7 @@ class CreatAccountTechnicienController extends Controller
             'Matricule_tech' => $request->Matricule_tech,
             'Nom_tech' => $request->Nom_tech,
             'Email_tech' => $request->Email_tech,
-            'Mot_de_passe' => Hash::make($request->Mot_de_passe), // Hachage du mot de passe
+            'Mot_de_passe_tech' => Hash::make($request->Mot_de_passe), // Hachage du mot de passe
             'CIN_tech' => $request->CIN_tech,
             'Prenom_tech' => $request->Prenom_tech,
         ]);
